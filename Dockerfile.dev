@@ -1,0 +1,7 @@
+FROM golang:alpine
+RUN apk update && apk add git
+COPY . /go/src/fitup
+WORKDIR /go/src/fitup
+RUN go get ./
+CMD go get github.com/githubnemo/CompileDaemon && CompileDaemon -command="./fitup"
+EXPOSE 5000
